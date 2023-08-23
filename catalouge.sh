@@ -3,8 +3,7 @@ DATE=$(date +%F:%H:%M:%S)
 SCRIPT_NAME=$0
 LOGFILE=$LOGFILE_DIRECTORY/$SCRIPT_NAME-$DATE.log
 USERID=$(id -u)
-USER_ROBOSHOP=$(id roboshop)
-VALIDATE_APP_DIR=$(cd /app)
+echo 
 
 R="\e[31m"
 G="\e[32m"
@@ -38,24 +37,24 @@ VALIDATE $? "Installing NodeJS"
 #once the user is created, if you run this script 2nd time
 # this command will defnitely fail
 # IMPROVEMENT: first check the user already exist or not, if not exist then create
-if [ $USER_ROBOSHOP -ne 0 ];
+USER_ROBOSHOP=$(id roboshop)
+if [ $? -ne 0 ];
 then 
-    echo -e "$Y USER roboshop is not present so creating one now..$N"
+    echo -e "$G...USER roboshop is already present so  skipping now.$N"
+else 
+    echo -e "$Y...USER roboshop is not present so creating one now..$N"
     useradd roboshop &>>$LOGFILE
- else 
-     echo -e "$Y USER roboshop is already present so not skipping now.$N"
- 
  fi
-
+#checking the app directory created or not
+VALIDATE_APP_DIR=$(cd /app)
 #write a condition to check directory already exist or not
-if [ $VALIDATE_APP_DIR -ne 0 ];
+if [ $? -ne 0 ];
 then 
+    echo -e "$G /app directory already present so skipping ....$N"    
+else
     echo -e " $Y /app directory not there so creating one $N"
     mkdir /app &>>$LOGFILE
-else
-    echo -e "$Y /app directory present so not skipping now.$N"
-
-fi
+    fi
 
 curl -o /tmp/catalogue.zip https://roboshop-builds.s3.amazonaws.com/catalogue.zip &>>$LOGFILE
 
