@@ -55,14 +55,13 @@ unzip /tmp/web.zip &>> LOG_FILE
 
 VALIDATE $? " unzipped the code in tmp folder"
 
-cp /home/centos/roboshop.conf /etc/nginx/default.d/roboshop.conf &>> LOG_FILE
+cp /home/centos/roboshop_shell/roboshop.conf /etc/nginx/default.d/roboshop.conf &>> LOG_FILE
 
 VALIDATE $? " editting the conf folder"
 
 systemctl restart nginx &>> LOG_FILE
 
 VALIDATE $? " RESTART Triggered"
-VALIDATE $? " RESTART success"
 
 
 
