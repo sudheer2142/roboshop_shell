@@ -62,6 +62,7 @@ VALIDATE $? " editting the conf folder"
 systemctl restart nginx &>> LOG_FILE
 
 VALIDATE $? " RESTART Triggered"
+VALIDATE $? " RESTART success"
 
 
 
