@@ -42,21 +42,19 @@ VALIDATE $? "Installing NodeJS"
 USER_ROBOSHOP=$(id roboshop)
 if [ $? -ne 0 ];
 then 
-    echo -e "$Y...USER roboshop is not present so creating one now..$N"
+    echo -e "$Y...USER roboshop is not present so creating now..$N"
     useradd roboshop &>>$LOGFILE
 else 
-    echo -e "$G...USER roboshop is already present so  skipping now.$N"
+    echo -e "$G...USER roboshop is already present so skipping now.$N"
  fi
-
-#write a condition to check directory already exist or not
+#checking the user app directory
 VALIDATE_APP_DIR=$(cd /app)
-#write a condition to check directory already exist or not
 if [ $? -ne 0 ];
 then 
-    echo -e " $Y /app directory not there so creating one $N"
+    echo -e " $Y /app directory not there so creating now $N"
     mkdir /app &>>$LOGFILE   
 else
-    echo -e "$G /app directory already present so skipping ....$N" 
+    echo -e "$G /app directory already present so skipping now $N" 
     fi
 
 curl -o /tmp/user.zip https://roboshop-builds.s3.amazonaws.com/user.zip &>>$LOGFILE
