@@ -8,7 +8,6 @@ DOMAIN_NAME=sudheerdevops.online
 # if mysql or mongodb instance_type should be t3.medium , for all others it is t2.micro
 
 for i in "${NAMES[@]}"
-echo "Creating instance for :${NAMES[@]}"
 do  
     if [[ $i == "mongodb" || $i == "mysql" ]]
     then
