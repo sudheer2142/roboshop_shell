@@ -1,8 +1,8 @@
 #!/bin/bash
 NAMES=("mongodb" "redis" "mysql" "rabbitmq" "catalogue" "user" "cart" "shipping" "payment" "dispatch" "web")
 INSTANCE_TYPE=""
-IMAGE_ID=ami-03265a0778a880afb
-SECURITY_GROUP_ID=sg-04df4f604fc090655
+IMAGE_ID=ami-0b4f379183e5706b9
+SECURITY_GROUP_ID=sg-088b68d8654919ddf
 DOMAIN_NAME=sudheerdev.online
 
 # if mysql or mongodb instance_type should be t3.medium , for all others it is t2.micro
